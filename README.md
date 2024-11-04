@@ -2,7 +2,7 @@
 Do you remember the how to setup rclone, or initate transfers, me neither... Here's everything you need to know.
 
 # Install rclone
-Install rclone for mac on your macbook and rclone for linux on the Alpien cluster in projects/. (https://rclone.org/downloads/)
+Install rclone for mac on your macbook and rclone for linux on the Alpine cluster in projects/. https://rclone.org/downloads/
  
 # Setup onedrive remote
 Follow this markdown for detailed instructions
