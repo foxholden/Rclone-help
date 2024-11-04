@@ -1,10 +1,11 @@
 # Rclone Help
-
 Do you remember the how to setup rclone, or initate transfers, me neither... Here's everything you need to know.
 
-1. Install rclone
-
-2. Setup remote. Here is a markdown with all the info you need.
+# Install rclone
+Install rclone for mac on your macbook and rclone for linux on the Alpien cluster in projects/. (https://rclone.org/downloads/)
+ 
+# Setup onedrive remote
+Follow this markdown for detailed instructions
 
 # Rclone copy from Sharepoint to your macbook
 ```
