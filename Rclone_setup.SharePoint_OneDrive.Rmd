@@ -149,4 +149,3 @@ d) Delete this remote
 y/e/d>y
 ```
 
-Now you have access to SharePoint via rclone. I'm moving over bam files, but it's a good time to transfer over large genetic data files to SharePoint and the respective species folders!
