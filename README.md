@@ -29,10 +29,15 @@ rclone copy -P --tpslimit 10 --fast-list /results/bqsr-round-0/downsample-5.0x/o
 
 I use rsync to transfer between ovis & Alpine. You need to run the command from ovis, as Alpine does not support rsync or scp commands.
 ```
-rsync --info=progress2 path-to-sending-directory/* reciever-address:/path-to-recieving-directory
+rsync path-to-sending-directory/* reciever-address:/path-to-recieving-directory
 ```
 For example:
 ```
 rsync --info=progress2 /home/BGP_Data_Share/LCWG_raw_data/LOSH/LCWG_Novoseq_LOSH_Plate1_2/FRI24808.20230801/230721_A00987_0644_BHCNWNDSX7/* foxhol@colostate.edu@login.rc.colorado.edu:/scratch/alpine/foxhol@colostate.edu/Nov24-clone/mega-non-model-wgs-snakeflow/data/fastqs/LCWG_Novoseq_LOSH_Plate2
+```
+Helpful rsync flags
+```
+--info=progress2, show copy/transfer progress
+-r, recursively copy subirectories 
 ```
 
