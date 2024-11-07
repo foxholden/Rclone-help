@@ -37,7 +37,9 @@ rsync --info=progress2 /home/BGP_Data_Share/LCWG_raw_data/LOSH/LCWG_Novoseq_LOSH
 ```
 Helpful rsync flags
 ```
---info=progress2, show copy/transfer progress
--r, recursively copy subirectories 
+--info=progress2         show copy/transfer progress
+--recursive, -r          recurse into directories
+--verbose, -v            incrementally list files transferred
+--dry-run, -n            perform a trial run with no changes made
 ```
 
