@@ -1,5 +1,5 @@
 # Rclone & Rsync Transfer Guide
-Do you remember the how to setup rclone, or initate transfers, me neither... This guide helps you quickly set up and transfer files between your MacBook, SharePoint (via OneDrive), and the Alpine HPC cluster. Just copy and paste.
+Do you remember the how to setup rclone, or initate transfers, me neither... This guide helps you quickly set up and transfer files between your MacBook, SharePoint, and the Alpine HPC cluster. Just copy and paste.
 
 ## Install rclone
 Install rclone for mac on your macbook and rclone for linux on the Alpine cluster in projects/ https://rclone.org/downloads/
