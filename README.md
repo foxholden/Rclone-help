@@ -1,8 +1,9 @@
-# Rclone Help
-Do you remember the how to setup rclone, or initate transfers, me neither... Here's everything you need to know.
+# Rclone & Rsync Transfer Guide
+Do you remember the how to setup rclone, or initate transfers, me neither... This guide helps you quickly set up and transfer files between your MacBook, SharePoint (via OneDrive), and the Alpine HPC cluster. Just copy and paste.
+
 
 # Install rclone
-Install rclone for mac on your macbook and rclone for linux on the Alpine cluster in projects/. https://rclone.org/downloads/
+Install rclone for mac on your macbook and rclone for linux on the Alpine cluster in projects/ https://rclone.org/downloads/
  
 # Setup onedrive remote
 Follow this markdown for detailed instructions
@@ -31,15 +32,33 @@ I use rsync to transfer between ovis & Alpine. You need to run the command from 
 ```
 rsync path-to-sending-directory/* reciever-address:/path-to-recieving-directory
 ```
+alpine's receiver address:
+```
+foxhol@colostate.edu@login.rc.colorado.edu:
+```
+ovis's receiver address:
+```
+foxhol@ovis.biology.colostate.edu
+```
 For example:
 ```
 rsync --info=progress2 /home/BGP_Data_Share/LCWG_raw_data/LOSH/LCWG_Novoseq_LOSH_Plate1_2/FRI24808.20230801/230721_A00987_0644_BHCNWNDSX7/* foxhol@colostate.edu@login.rc.colorado.edu:/scratch/alpine/foxhol@colostate.edu/Nov24-clone/mega-non-model-wgs-snakeflow/data/fastqs/LCWG_Novoseq_LOSH_Plate2
 ```
 Helpful rsync flags
 ```
+rsync -avh --info=progress2
 --info=progress2         show copy/transfer progress
 --recursive, -r          recurse into directories
 --verbose, -v            incrementally list files transferred
 --dry-run, -n            perform a trial run with no changes made
 ```
+
+| Flag               | Purpose                            |
+| ------------------ | ---------------------------------- |
+| `-a`               | Archive mode (preserves structure) |
+| `-v`               | Verbose output                     |
+| `-h`               | Human-readable sizes               |
+| `--info=progress2` | Show detailed progress             |
+| `-n` / `--dry-run` | Trial run (no changes made)        |
+
 
