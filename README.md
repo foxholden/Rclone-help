@@ -1,7 +1,6 @@
 # Rclone & Rsync Transfer Guide
 Do you remember the how to setup rclone, or initate transfers, me neither... This guide helps you quickly set up and transfer files between your MacBook, SharePoint (via OneDrive), and the Alpine HPC cluster. Just copy and paste.
 
-
 # Install rclone
 Install rclone for mac on your macbook and rclone for linux on the Alpine cluster in projects/ https://rclone.org/downloads/
  
@@ -12,46 +11,30 @@ Follow this markdown for detailed instructions
 ```
 rclone copy -P --tpslimit 10 --fast-list remote-name:/path-to-transfer-location-on-sharepoint recieving-directory-name
 ```
-For example:
-```
-rclone copy -P --tpslimit 10 --fast-list Sharepoint:/Genetic_and_Environmental_Data/Species_genetic_data/LOSH/downsampled_bam_Holden/x5.0 .
-```
 
 # Rclone copy from macbook to sharepoint
 ```
 rclone copy -P --tpslimit 10 --fast-list sending-directory-name remote-name:/path-to-transfer-location-on-sharepoint
 ```
-For example:
-```
-rclone copy -P --tpslimit 10 --fast-list /results/bqsr-round-0/downsample-5.0x/overlap_clipped Sharepoint:/Genetic_and_Environmental_Data/Species_genetic_data/LOSH/downsampled_bam_Holden/x5.0
-```
 
 # rsync
-
-I use rsync to transfer between ovis & Alpine. You need to run the command from ovis, as Alpine does not support rsync or scp commands.
+Rsync is commonly available on most clusters. I use rsync to transfer between Ovis & Alpine. Run rsync from Ovis. Alpine does not support rsync or scp for outbound transfers. 
 ```
 rsync path-to-sending-directory/* reciever-address:/path-to-recieving-directory
 ```
-alpine's receiver address:
+
+Receiver addresses:
+
+Alpine
 ```
 foxhol@colostate.edu@login.rc.colorado.edu:
 ```
-ovis's receiver address:
+Ovis
 ```
 foxhol@ovis.biology.colostate.edu
 ```
-For example:
-```
-rsync --info=progress2 /home/BGP_Data_Share/LCWG_raw_data/LOSH/LCWG_Novoseq_LOSH_Plate1_2/FRI24808.20230801/230721_A00987_0644_BHCNWNDSX7/* foxhol@colostate.edu@login.rc.colorado.edu:/scratch/alpine/foxhol@colostate.edu/Nov24-clone/mega-non-model-wgs-snakeflow/data/fastqs/LCWG_Novoseq_LOSH_Plate2
-```
+
 Helpful rsync flags
-```
-rsync -avh --info=progress2
---info=progress2         show copy/transfer progress
---recursive, -r          recurse into directories
---verbose, -v            incrementally list files transferred
---dry-run, -n            perform a trial run with no changes made
-```
 
 | Flag               | Purpose                            |
 | ------------------ | ---------------------------------- |
@@ -60,5 +43,11 @@ rsync -avh --info=progress2
 | `-h`               | Human-readable sizes               |
 | `--info=progress2` | Show detailed progress             |
 | `-n` / `--dry-run` | Trial run (no changes made)        |
+| `-r`               | recurse into directories           |
+
+Example Dry Run
+```
+rsync -avh --info=progress2 --dry-run /source/dir/ foxhol@colostate.edu@login.rc.colorado.edu:/dest/dir/
+```
 
 
